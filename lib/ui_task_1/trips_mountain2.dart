@@ -101,41 +101,33 @@ class _TripsMnt2State extends State<TripsMnt2> {
                 Text('●')
               ],
             ),
-            SizedBox(
-              height: 15,
-            ),
             Row(
               children: [
-                SizedBox(
-                  width: 20,
-                ),
                 Container(
                   height: 300,
-                  width: 170,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Column(
+                  width: 162,
+                  child: Stack(
                     children: [
-                      Image(
-                        image: AssetImage('assets/hampi_pic.jpg'),
-                        fit: BoxFit.fill,
+                      Container(
+                        height: 300,
+                        width: 162,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/mount_kenya.jpg'))),
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: Colors.green,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 210,right: 60),
+                        child: Container(
+                          height: 40,
+                          width: 170,
+                          color: Colors.white.withOpacity(0.5),
+                          child: Center(
+                            child: Text(
+                              'Mount',
+                              style: TextStyle(color: Colors.white, fontSize: 20),
+                            ),
                           ),
-                          Text(
-                            'Hampi',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                        ),
                       )
                     ],
                   ),
@@ -286,28 +278,34 @@ class _TripsMnt2State extends State<TripsMnt2> {
                 Container(
                   height: 20,
                   width: 20,
-                  decoration: BoxDecoration(color: Colors.white,
-                  image: DecorationImage(image: AssetImage('assets/home_icon.png'))
-                  ),
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      image: DecorationImage(
+                          image: AssetImage('assets/home_icon.png'))),
                 ),
                 Container(
                   height: 40,
                   width: 40,
-                  decoration: BoxDecoration(color: Colors.white,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
                   ),
-                  child: Icon(Icons.menu,size: 30,color: Colors.black),
+                  child: Icon(Icons.menu, size: 30, color: Colors.black),
                 ),
                 Container(
                   height: 40,
                   width: 40,
                   decoration: BoxDecoration(color: Colors.white),
-                  child: Icon(Icons.search,size: 30,color: Colors.black,),
+                  child: Icon(
+                    Icons.search,
+                    size: 30,
+                    color: Colors.black,
+                  ),
                 ),
                 Container(
                   height: 40,
                   width: 40,
                   decoration: BoxDecoration(color: Colors.white),
-                  child: Icon(Icons.person,size: 30,color: Colors.black),
+                  child: Icon(Icons.person, size: 30, color: Colors.black),
                 ),
               ],
             )
