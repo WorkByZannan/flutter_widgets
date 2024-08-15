@@ -10,6 +10,7 @@ class ModernSignUp extends StatefulWidget {
 }
 
 class _ModernLoginState extends State<ModernSignUp> {
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,192 +18,207 @@ class _ModernLoginState extends State<ModernSignUp> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 30, left: 35),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    height: 200,
-                    width: 200,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        image: DecorationImage(
-                            image: AssetImage('assets/sign_up_pic.png'),
-                            fit: BoxFit.cover)),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Text(
-                    'Get On Board!',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [Text('Create your profile to start your Journey.')],
-              ),
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, right: 35),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          label: Text('Full Name'),
-                          prefixIcon: Icon(Icons.person),
-                          enabledBorder: OutlineInputBorder(),
-                          fillColor: Colors.white,
-                          filled: true),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 7, right: 35),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          label: Text('E-Mail'),
-                          prefixIcon: Icon(Icons.email_outlined),
-                          enabledBorder: OutlineInputBorder(),
-                          fillColor: Colors.white,
-                          filled: true),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 7, right: 35),
-                    child: TextFormField(
-                      keyboardType: TextInputType.numberWithOptions(),
-                      decoration: InputDecoration(
-                          label: Text('Phone No'),
-                          prefixIcon: Icon(Icons.numbers),
-                          enabledBorder: OutlineInputBorder(),
-                          fillColor: Colors.white,
-                          filled: true),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 7,right: 35),
-                    child: TextFormField(
-                      decoration: InputDecoration(
-                          label: Text('Password'),
-                          prefixIcon: Icon(Icons.fingerprint),
-                          enabledBorder: OutlineInputBorder(),
-                          fillColor: Colors.white,
-                          filled: true,
-                          ),
-                      obscureText: true,
-                    ),
-                  ),
-                  
-                  
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Container(
-                      height: 40,
-                      width: 320,
-                      decoration: BoxDecoration(color: Colors.black),
-                      child: Center(
-                          child: TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'SIGNUP',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      )),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 150, top: 10),
-                    child: Text(
-                      'OR',
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  TextButton(
-                    onPressed: () {},
-                    child: Container(
-                      height: 40,
-                      width: 300,
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      height: 200,
+                      width: 200,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          border: Border.all(color: Colors.black, width: 2)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            height: 20,
-                            width: 20,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                image: DecorationImage(
-                                    image: AssetImage('assets/google_pic.png'))),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            'Sign in with Google',
-                            style: TextStyle(
-                                color: Colors.black, fontWeight: FontWeight.w600),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 60),
-                child: Row(
+                          image: DecorationImage(
+                              image: AssetImage('assets/sign_up_pic.png'),
+                              fit: BoxFit.cover)),
+                    )
+                  ],
+                ),
+                Row(
                   children: [
                     Text(
-                      "Already have an Account?",
+                      'Get On Board!',
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.w500),
+                        color: Colors.black,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [Text('Create your profile to start your Journey.')],
+                ),
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, right: 35),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value !.isEmpty){ 
+                              return "Name field can't be empty";
+                          }
+                         
+                        },
+                        decoration: InputDecoration(
+                            label: Text('Full Name'),
+                            prefixIcon: Icon(Icons.person),
+                            enabledBorder: OutlineInputBorder(),
+                            focusedErrorBorder: OutlineInputBorder(),
+                            
+                            fillColor: Colors.white,
+                            filled: true),
+                      ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 14),
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return ModernLogin();
-                          },));
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 15,left: 3),
+                      padding: const EdgeInsets.only(top: 7, right: 35),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            label: Text('E-Mail'),
+                            prefixIcon: Icon(Icons.email_outlined),
+                            enabledBorder: OutlineInputBorder(),
+                            fillColor: Colors.white,
+                            filled: true),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7, right: 35),
+                      child: TextFormField(
+                        keyboardType: TextInputType.numberWithOptions(),
+                        decoration: InputDecoration(
+                            label: Text('Phone No'),
+                            prefixIcon: Icon(Icons.numbers),
+                            enabledBorder: OutlineInputBorder(),
+                            fillColor: Colors.white,
+                            filled: true),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 7,right: 35),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                            label: Text('Password'),
+                            prefixIcon: Icon(Icons.fingerprint),
+                            enabledBorder: OutlineInputBorder(),
+                            fillColor: Colors.white,
+                            filled: true,
+                            ),
+                        obscureText: true,
+                      ),
+                    ),
+                    
+                    
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Container(
+                        height: 40,
+                        width: 320,
+                        decoration: BoxDecoration(color: Colors.black),
+                        child: Center(
+                            child: TextButton(
+                          onPressed: () {
+                             if (formKey.currentState!.validate()){
+                            print('Kindly type your full name');
+                          }
+                          },
                           child: Text(
-                            'Login',
+                            'SIGNUP',
                             style: TextStyle(
-                                color: Colors.blue, fontWeight: FontWeight.w700,fontSize: 14),
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
                           ),
+                        )),
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 150, top: 10),
+                      child: Text(
+                        'OR',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    )
+                  ],
+                ),
+                Row(
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        height: 40,
+                        width: 300,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black, width: 2)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 20,
+                              width: 20,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  image: DecorationImage(
+                                      image: AssetImage('assets/google_pic.png'))),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              'Sign in with Google',
+                              style: TextStyle(
+                                  color: Colors.black, fontWeight: FontWeight.w600),
+                            )
+                          ],
                         ),
                       ),
                     )
                   ],
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(left: 60),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Already have an Account?",
+                        style: TextStyle(
+                            color: Colors.black, fontWeight: FontWeight.w500),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 14),
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return ModernLogin();
+                            },));
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 15,left: 3),
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                  color: Colors.blue, fontWeight: FontWeight.w700,fontSize: 14),
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
